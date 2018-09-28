@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.11/dist/sweetalert2.min.css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <div id="toolBar">
+            <div class="m-0">
+                <div class="btn-group" role="group" aria-label="Default button group">
+                    <button type="button" class="btn btn-sm" onclick="$('#ipOpenImage').trigger('click')"><i class="fa fa-folder-open"></i>
+                        Add Image</button>
+                    <button type="button" class="btn btn-sm" onclick="clearAll()"><i class="fa fa-trash"></i> Clear All</button>
+                    <input id="ipOpenImage" class="d-none" type="file" onchange="onSelectFile(this)" multiple />
+                    <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#modal-edit-meta"><i
+                            class="fa fa-pencil"></i>
+                        Edit Metadata</button>
+                    <button type="button" class="btn btn-sm" onclick="PrepareUpload()"><i class="fa fa-download"></i>
+                        Make Epub</button>
+                </div>
+                <div class="rtl-wrapper">
+                    <span class="switch-name">Reading Direction</span>
+                    <label class="switch switch-left-right">
+                        <input id="sw-rtl" class="switch-input" type="checkbox" checked>
+                        <span class="switch-label" data-on="RTL" data-off="LTR"></span> <span class="switch-handle"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div id="previewBox">
+            <ul id="listPage">
+                <li>
+                    <div class="no-image">
+                        <img src="no-image.jpg" alt="No image">
+                        <p>Add some image!</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-edit-meta" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modelTitleId">Edit Metadata</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="m-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Title</span>
+                            </div>
+                            <input type="text" id="txt-title" class="form-control" placeholder="" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Author</span>
+                            </div>
+                            <input type="text" id="txt-author" class="form-control" placeholder="" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="SaveMetaData()" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.11/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+</body>
+
+</html>
